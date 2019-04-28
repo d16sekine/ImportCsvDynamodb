@@ -1,0 +1,21 @@
+{
+    "extends": ["eslint:recommended", "plugin:node/recommended"],
+    "parserOptions": {
+        "ecmaVersion": 8
+    }, 
+    "env": {
+        "node": true,
+        "es6": true
+    },
+    "globals": {},
+    "rules": {
+        "no-extra-semi": "warn",
+        "quotes": ["warn", "double"],  
+        "arrow-body-style": ["error", "always"],
+        "node/exports-style": "error",
+        "node/no-missing-require": "error", 
+        "node/no-unsupported-features":  ["error", {"version": 8}],
+        "no-console": 0
+        
+    }
+}

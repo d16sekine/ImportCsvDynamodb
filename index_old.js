@@ -7,8 +7,8 @@ AWS.config.update({region: 'ap-northeast-1'});
 const docClient = new AWS.DynamoDB.DocumentClient();
 
 //Config 
-const targetTableName = "auction_groups-dev";
-const csv_filename = "./auctions.csv";
+const targetTableName = "test";
+const csv_filename = "./test.csv";
 const sleep_milsecond = 1000;
 //
 
@@ -38,7 +38,7 @@ async function main(){
                 Item: targetItem
             };
 
-            //await docClient.put(params).promise();
+            await docClient.put(params).promise();
 
             console.log(i +" of " + maxRow + " row data was imported.")
 
@@ -78,34 +78,6 @@ function createItemData(keys, data){
         if(data[i] === "") data[i] = false;
 
         obj[keys[i]] = data[i];
-
-        if(keys[i] == "auction_gid") obj[keys[i]] = parseInt(data[i],10);
-
-        if(data[i].match(/\[.*\]/g) !== null) {
-
-            // data[i] = data[i].replace(/   /g,"");
-
-            //let array = data[i].split(",")
-
-            let json = JSON.parse(data[i]);
-
-            //console.log("json:",json);
-
-            console.log("json.length:",json.length);
-
-            for(let i=0; i< json.length; i++){
-
-                console.log("json[i]:", json[i]);
-
-            }
-
-            //console.log("Item:", data[i]);
-            //console.log("Array:", array);
-
-
-        }
-
-
 
     }
 
